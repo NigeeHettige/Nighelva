@@ -30,10 +30,6 @@ function SideNav() {
     },
   ];
 
-
-
-  
-
   const path = usePathname();
   useEffect(() => {
     console.log(path);
@@ -41,7 +37,9 @@ function SideNav() {
   return (
     <div className="h-screen relative p-5 shadow-sm border bg-white">
       <div className="flex justify-center mb-2">
-        <Image src={"/logo.svg"} alt="logo" width={50} height={100} />
+        <Link href={"/"}>
+          <Image src={"/logo.svg"} alt="logo" width={50} height={100} />
+        </Link>
       </div>
 
       <hr className="my-6" />
@@ -50,18 +48,21 @@ function SideNav() {
         {MenuList.map((menu, index) => (
           <div
             key={index}
-            className={`flex mb-2 p-3 gap-2 hover:bg-primary hover:text-white rounded-lg cursor-pointer items-center ${path == menu.path&&'bg-primary text-white'}`}
+            className={`flex mb-2 p-3 gap-2 hover:bg-primary hover:text-white rounded-lg cursor-pointer items-center ${
+              path == menu.path && "bg-primary text-white"
+            }`}
           >
             <menu.icon className="h-7 w-7" />
-            <Link href={menu.path}><h2 className="text-lg">{menu.name}</h2></Link>
+            <Link href={menu.path}>
+              <h2 className="text-lg">{menu.name}</h2>
+            </Link>
           </div>
         ))}
       </div>
 
-        <div className="absolute bottom-10 left-0 w-full">
-          <UsageTrack/>
-        </div>
-
+      <div className="absolute bottom-10 left-0 w-full">
+        <UsageTrack />
+      </div>
     </div>
   );
 }
