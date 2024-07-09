@@ -18,7 +18,7 @@ function UsageTrack() {
   const GetData = async () => {
     {/* @ts-ignore */}
     const unlimitedAccess = localStorage.getItem("unlimitedAccess") === "true";
-    if(!unlimitedAccess){
+    if(!unlimitedAccess&& user?.primaryEmailAddress?.emailAddress){
       const result: AIOUTPUTDATA[] = await db
       .select()
       .from(AIOutput)
